@@ -1,0 +1,41 @@
+if (dopust_char(line[i])) { //обращение к функции
+                int start = i;
+                while (i < len && dopust_char(line[i])) {
+                    i++;
+                }
+                int end = i;
+
+                while (i < len && isspace(line[i])) i++; //скобка после обращения?
+                if (i < len && line[i] == '(') {
+                    printf("\033[31m"); //цвет
+                    for (int j = start; j < end; j++) {
+                        printf("%c", line[j]);
+                    }
+                    printf("\033[0m"); //убираем цвет
+                    for (int j = end; j < i; j++) {
+                        printf("%c", line[j]);
+                    }
+                    printf("(");
+                    i++;
+                    continue;
+                } else { //нет скобки
+                    for (int j = start; j < end; j++) {
+                        printf("%c", line[j]);
+                    }
+                }
+            } else { //остальной текст
+                printf("%c", line[i]);
+                i++;
+            }
+        }
+        comment_1 = 0; //сбросим комментарии в конце строки
+    }
+
+    fclose(file);
+    return 0;
+}
+
+// lol()
+/* lol() */
+" lol() "
+' lol() '
